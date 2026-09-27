@@ -5,6 +5,7 @@
   const result = root.querySelector('[data-webrtc-result]');
   let visibleIp = null;
   async function refresh() {
+    visibleIp = null;
     try {
       const response = await fetch(root.dataset.api || '/tools/ip.json', {cache: 'no-store'});
       if (!response.ok) throw new Error();
@@ -13,9 +14,18 @@
       root.querySelector('[data-current-ip]').textContent = data.ip || '—';
       root.querySelector('[data-current-country]').textContent = data.country || '';
       root.querySelector('[data-ip-family]').textContent = data.family || '—';
-    } catch (_) { result.textContent = en ? 'The IP check failed. Try again.' : 'De IP-controle is niet gelukt. Probeer opnieuw.'; }
+    } catch (_) {
+      root.querySelector('[data-current-ip]').textContent = '—';
+      root.querySelector('[data-current-country]').textContent = '';
+      root.querySelector('[data-ip-family]').textContent = '—';
+      result.textContent = en ? 'The IP check failed. Try again.' : 'De IP-controle is niet gelukt. Probeer opnieuw.';
+    }
   }
   async function checkWebRtc() {
+    if (!visibleIp) {
+      await refresh();
+      if (!visibleIp) return;
+    }
     if (!window.RTCPeerConnection) {
       result.textContent = en ? 'WebRTC is unavailable in this browser.' : 'WebRTC is niet beschikbaar in deze browser.';
       return;

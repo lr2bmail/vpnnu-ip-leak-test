@@ -1,11 +1,22 @@
 <!doctype html>
-<html lang="nl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IP- en WebRTC-lektest · VPNNu</title>
-<style>body{font:16px/1.6 system-ui,sans-serif;max-width:740px;margin:50px auto;padding:0 20px;color:#192d45}h1{line-height:1.2}button{padding:12px 17px;border:0;border-radius:8px;background:#295ceb;color:#fff;cursor:pointer;margin:8px 8px 8px 0}button:focus-visible,a:focus-visible{outline:3px solid orange}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}.grid>div{padding:17px;border:1px solid #dbe2ec;border-radius:9px}.grid span,.grid small{display:block;color:#667486}.grid strong{display:block;overflow-wrap:anywhere;font-size:21px}@media(max-width:550px){.grid{grid-template-columns:1fr}}</style>
-<main data-tool="ip-leak-test" data-lang="nl" data-api="https://vpnnu.nl/tools/ip.json">
-<h1>IP- en WebRTC-lektest</h1><p>Bekijk het IP dat VPNNu ontvangt en test welke netwerkadressen WebRTC in deze browser laat zien.</p>
-<div class="grid"><div><span>IP gezien door VPNNu</span><strong data-current-ip>—</strong><small data-current-country></small></div><div><span>Waargenomen adresfamilie</span><strong data-ip-family>—</strong></div></div>
-<button type="button" data-webrtc-run>Test WebRTC</button><button type="button" data-refresh-ip>Vernieuw IP</button>
-<p role="status" data-webrtc-result>De WebRTC-test start pas na je klik en gebruikt een publieke STUN-server.</p>
-<p>Geen WebRTC-resultaat bewijst niet dat er geen lek is. Deze test identificeert je DNS-resolver niet. Gebruik daarvoor een aparte <a href="https://www.dnsleaktest.com/">DNS-lektest</a>.</p>
-<p><a href="https://vpnnu.nl/tools/ip-leak-test/">Gebruik de test op VPNNu.nl</a></p>
-</main><script src="tool.js" defer></script></html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Bekijk je zichtbare IP-adres en test welke adressen WebRTC in je browser laat zien. Gratis IP-lektest van VPNNu.">
+  <title>IP- en WebRTC-lektest | VPNNu</title>
+  <style>
+    body{margin:0;background:#f8faff;color:#192d45;font:16px/1.5 system-ui,sans-serif}main{max-width:700px;margin:0 auto;padding:48px 20px}h1{font-size:clamp(32px,5vw,48px);line-height:1.15;margin:0 0 12px}p{color:#596b82}.panel{background:#fff;border:1px solid #dbe2ec;border-radius:14px;padding:22px;margin-top:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid>div{border:1px solid #dbe2ec;border-radius:10px;padding:14px;min-width:0}.grid span,.grid small{display:block;color:#667486;font-size:13px}.grid strong{display:block;overflow-wrap:anywhere;font-size:20px;margin:4px 0}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}button{padding:11px 16px;border:1px solid #295ceb;border-radius:9px;background:#295ceb;color:#fff;font:inherit;font-weight:600;cursor:pointer}button.secondary{background:#fff;color:#192d45;border-color:#dbe2ec}#result{margin:16px 0 0;padding:10px 12px;background:#f2f5fb;border-radius:8px}details{margin-top:18px;border:1px solid #dbe2ec;border-radius:9px;background:#fff}summary{padding:12px 16px;cursor:pointer;font-weight:600}details p{padding:0 16px 12px;margin:0}a{color:#295ceb}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #e69418}@media(max-width:550px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body><main data-tool="ip-leak-test" data-lang="nl" data-api="https://vpnnu.nl/tools/ip.json">
+  <h1>IP- en WebRTC-lektest</h1>
+  <p>Bekijk welk adres deze website ziet en wat WebRTC kan laten zien.</p>
+  <div class="panel">
+    <div class="grid"><div><span>IP gezien door VPNNu</span><strong data-current-ip>—</strong><small data-current-country></small></div><div><span>Adresfamilie</span><strong data-ip-family>—</strong></div></div>
+    <div class="actions"><button type="button" data-webrtc-run>Test WebRTC</button><button class="secondary" type="button" data-refresh-ip>Vernieuw IP</button></div>
+    <p id="result" role="status" data-webrtc-result>WebRTC gebruikt na je klik een publieke STUN-server.</p>
+  </div>
+  <details><summary>Over deze controle</summary><p>Geen WebRTC-resultaat bewijst niet dat er geen lek is. Deze pagina bepaalt je DNS-resolver niet en bevestigt geen IPv6-bescherming. Voor DNS kun je een <a href="https://www.dnsleaktest.com/">externe DNS-test</a> gebruiken.</p></details>
+  <p><a href="https://vpnnu.nl/tools/ip-leak-test/">Gebruik de lektest op VPNNu.nl →</a></p>
+</main><script src="tool.js" defer></script></body></html>
